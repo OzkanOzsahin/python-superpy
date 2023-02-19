@@ -1,0 +1,101 @@
+id,product_name,buy_date,buy_price,expiration_date
+1,Tea - Grapefruit Green Tea,19/01/2023,"€8,08",27/01/2023
+2,Beef - Eye Of Round,14/01/2023,"€3,73",01/02/2023
+3,Munchies Honey Sweet Trail Mix,17/01/2023,"€4,08",03/01/2023
+4,Energy Drink,23/01/2023,"€7,14",30/01/2023
+5,Cheese - Fontina,29/01/2023,"€6,12",08/01/2023
+6,Piping Jelly - All Colours,08/01/2023,"€4,33",04/01/2023
+7,"Coke - Classic, 355 Ml",21/01/2023,"€4,48",16/01/2023
+8,Flower - Leather Leaf Fern,02/01/2023,"€7,00",29/01/2023
+9,"Wine - Red, Harrow Estates, Cab",05/01/2023,"€7,81",10/01/2023
+10,Versatainer Nc - 9388,20/01/2023,"€3,05",07/01/2023
+11,Flour - Rye,30/01/2023,"€4,04",20/01/2023
+12,Potatoes - Idaho 80 Count,29/01/2023,"€6,21",22/01/2023
+13,Mangoes,15/01/2023,"€0,31",15/01/2023
+14,Tomatoes Tear Drop Yellow,30/01/2023,"€2,35",08/01/2023
+15,Magnotta - Bel Paese White,29/01/2023,"€7,63",28/01/2023
+16,Beans - Soya Bean,02/02/2023,"€9,96",10/01/2023
+17,"Peas - Pigeon, Dry",04/01/2023,"€5,89",30/01/2023
+18,"Yogurt - Banana, 175 Gr",06/01/2023,"€3,60",12/01/2023
+19,Appetizer - Sausage Rolls,04/01/2023,"€0,93",05/01/2023
+20,"Juice - Cranberry, 341 Ml",08/01/2023,"€4,68",15/01/2023
+21,"Cup - 3.5oz, Foam",01/02/2023,"€4,19",04/01/2023
+22,Cranberries - Fresh,20/01/2023,"€2,43",21/01/2023
+23,Bread - Wheat Baguette,10/01/2023,"€9,02",05/01/2023
+24,Bread Sour Rolls,25/01/2023,"€0,81",15/01/2023
+25,Pork Casing,10/01/2023,"€8,53",23/01/2023
+26,"Chocolate - Pistoles, Lactee, Milk",31/01/2023,"€6,48",12/01/2023
+27,Wine - Rioja Campo Viejo,25/01/2023,"€6,94",06/01/2023
+28,"Tomatoes - Plum, Canned",19/01/2023,"€9,60",09/01/2023
+29,Piping - Bags Quizna,15/01/2023,"€4,00",15/01/2023
+30,Wine - Maipo Valle Cabernet,03/01/2023,"€2,53",29/01/2023
+31,Oysters - Smoked,01/01/2023,"€0,95",28/01/2023
+32,Plasticforkblack,17/01/2023,"€6,14",28/01/2023
+33,Lotus Leaves,12/01/2023,"€9,10",23/01/2023
+34,Milk 2% 500 Ml,06/01/2023,"€3,48",02/01/2023
+35,Wine - Blue Nun Qualitatswein,27/01/2023,"€6,99",03/01/2023
+36,Soup - Campbells Tomato Ravioli,19/01/2023,"€4,21",02/01/2023
+37,"Wine - White, Gewurtzraminer",01/01/2023,"€5,83",07/01/2023
+38,Plums - Red,15/01/2023,"€0,45",01/02/2023
+39,Tea - Herbal I Love Lemon,10/01/2023,"€5,43",04/01/2023
+40,Brandy - Bar,28/01/2023,"€0,75",25/01/2023
+41,"Bread - Crumbs, Bulk",05/01/2023,"€5,29",07/01/2023
+42,Magnotta - Bel Paese White,25/01/2023,"€2,71",28/01/2023
+43,Bag - Clear 7 Lb,15/01/2023,"€1,21",21/01/2023
+44,Sauce - Plum,25/01/2023,"€5,84",14/01/2023
+45,General Purpose Trigger,14/01/2023,"€3,81",23/01/2023
+46,Cake - French Pear Tart,28/01/2023,"€0,63",30/01/2023
+47,"Pork - Chop, Frenched",26/01/2023,"€4,08",23/01/2023
+48,Longos - Greek Salad,27/01/2023,"€9,17",06/01/2023
+49,Chicken - Leg / Back Attach,27/01/2023,"€5,24",02/01/2023
+50,"Melon - Watermelon, Seedless",07/01/2023,"€8,15",28/01/2023
+51,Passion Fruit,10/01/2023,"€8,42",01/01/2023
+52,"Bread - Sticks, Thin, Plain",17/01/2023,"€1,36",17/01/2023
+53,Veal - Knuckle,14/01/2023,"€2,64",02/02/2023
+54,Napkin White - Starched,14/01/2023,"€2,74",13/01/2023
+55,Salad Dressing,24/01/2023,"€6,76",25/01/2023
+56,Beef - Shank,21/01/2023,"€4,25",02/02/2023
+57,Apricots - Dried,31/01/2023,"€1,57",15/01/2023
+58,Cinnamon - Stick,21/01/2023,"€2,59",02/01/2023
+59,Chinese Foods - Chicken Wing,17/01/2023,"€3,28",14/01/2023
+60,Calvados - Boulard,14/01/2023,"€4,77",18/01/2023
+61,Cup - 8oz Coffee Perforated,09/01/2023,"€6,05",31/01/2023
+62,Alize Gold Passion,15/01/2023,"€5,37",11/01/2023
+63,Curry Paste - Green Masala,04/01/2023,"€7,35",20/01/2023
+64,Creme De Cacao White,15/01/2023,"€4,56",01/01/2023
+65,Quail - Jumbo,20/01/2023,"€5,64",23/01/2023
+66,Beer - Camerons Cream Ale,16/01/2023,"€9,72",08/01/2023
+67,"Lid - High Heat, Super Clear",26/01/2023,"€5,33",22/01/2023
+68,Veal - Eye Of Round,02/01/2023,"€9,53",19/01/2023
+69,Syrup - Monin - Passion Fruit,22/01/2023,"€5,83",09/01/2023
+70,Crush - Cream Soda,29/01/2023,"€6,02",13/01/2023
+71,"Cheese - Cheddar, Mild",07/01/2023,"€1,22",28/01/2023
+72,Cake - French Pear Tart,06/01/2023,"€4,58",29/01/2023
+73,Puree - Raspberry,16/01/2023,"€6,41",20/01/2023
+74,Pears - Fiorelle,30/01/2023,"€5,04",02/02/2023
+75,Sauce - Hoisin,27/01/2023,"€8,71",11/01/2023
+76,Bread - Onion Focaccia,13/01/2023,"€7,91",28/01/2023
+77,Spinach - Spinach Leaf,17/01/2023,"€4,66",29/01/2023
+78,Shichimi Togarashi Peppeers,22/01/2023,"€1,31",09/01/2023
+79,Currants,01/01/2023,"€4,53",11/01/2023
+80,"Beef - Ground, Extra Lean, Fresh",28/01/2023,"€8,93",20/01/2023
+81,Mussels - Cultivated,21/01/2023,"€8,94",30/01/2023
+82,Mussels - Frozen,15/01/2023,"€1,52",09/01/2023
+83,"Sauce - Gravy, Au Jus, Mix",22/01/2023,"€6,04",04/01/2023
+84,Veal - Insides Provini,24/01/2023,"€1,94",21/01/2023
+85,"Pasta - Lasagna, Dry",12/01/2023,"€7,33",25/01/2023
+86,Instant Coffee,19/01/2023,"€5,28",23/01/2023
+87,Ecolab - Medallion,14/01/2023,"€6,65",05/01/2023
+88,Bar Special K,26/01/2023,"€9,23",27/01/2023
+89,"Appetizer - Mini Egg Roll, Shrimp",05/01/2023,"€0,10",20/01/2023
+90,V8 Pet,27/01/2023,"€0,60",11/01/2023
+91,"Olives - Green, Pitted",18/01/2023,"€2,26",29/01/2023
+92,Beer - Creemore,18/01/2023,"€9,33",12/01/2023
+93,Soup - Campbells Chili Veg,12/01/2023,"€2,83",14/01/2023
+94,The Pop Shoppe - Lime Rickey,13/01/2023,"€2,73",26/01/2023
+95,Appetizer - Smoked Salmon / Dill,01/01/2023,"€5,24",21/01/2023
+96,Dawn Professionl Pot And Pan,03/01/2023,"€8,32",27/01/2023
+97,Broom And Broom Rack White,12/01/2023,"€5,89",20/01/2023
+98,Nantucket - Pomegranate Pear,17/01/2023,"€3,21",26/01/2023
+99,Apron,19/01/2023,"€3,35",24/01/2023
+100,Wine - Guy Sage Touraine,01/02/2023,"€4,55",01/02/2023
