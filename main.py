@@ -1,7 +1,11 @@
 #imports
 
-import os
 import csv
+import os
+
+
+
+
 
 
 # Do not change these lines.
@@ -14,9 +18,15 @@ __human_name__ = "superpy"
 def main():
     pass
 
+#import and read csv
 
-#Importing and reading the csv files
-with open('bought.csv', 'r') as file:
-  csvreader = csv.reader(file)
-  for row in csvreader:
-    print(row)
+    filepath = os.path.join(os.getcwd(), "inventory.csv")
+    with open(filepath, 'r', newline='') as csvfile:
+            csv_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            inventory_list = list(csv_reader)
+
+    for row in csvfile:
+         print(row)
+
+
+# Add parsers
