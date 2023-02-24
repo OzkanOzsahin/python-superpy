@@ -3,7 +3,7 @@ import datetime
 import csv
 import os.path
 import argparse
-
+import pandas as pd
 
 
 
@@ -46,18 +46,14 @@ def main():
 
 #import and read csv
 
-    filepath = os.path.join(os.getcwd(), "bought.csv")
-    with open(filepath, 'r', newline='') as csvfile:
-            csv = csv.reader(csvfile, delimiter=',', quotechar='|')
-            list = list(csvfile)
 
-    for row in csvfile:
-         print(row)
 
+#pandas
+df = pd.read_csv('bought.csv')
+print(df)
         
 # Add parsers
 
 
-
 if __name__ == "__main__":
-     main()
+    main()
