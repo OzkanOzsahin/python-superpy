@@ -1,7 +1,5 @@
 #imports
-import datetime
-import csv
-import os.path
+import datetime 
 import argparse
 import pandas as pd
 
@@ -25,10 +23,10 @@ with open("current_date.txt", "r") as f:
     saved_date = f.read().strip()
 
 # Check if the saved date matches the current date
-if saved_date == today:
-    print("Today is", today)
+if saved_date == now:
+    print("Today is", now)
 else:
-    print("Today is today", today)
+    print("Today is today", now)
     
 
 
