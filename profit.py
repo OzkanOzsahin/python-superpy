@@ -12,6 +12,10 @@ def get_total_profit():
     sum = total_revenue - total
     return sum
 
+def print_total_profit():
+    total_profit = get_total_profit()
+    print(f"The total profit is: {total_profit} eur")
+
 def get_profit_between_dates(first_date, second_date):
     total = 0
     items = get_bought_between_dates(first_date, second_date)

@@ -16,7 +16,7 @@ def print_date():
             date = line
     print(f"Show current date: {date}")
 
-def set_durrent_date():
+def set_current_date():
     today = str(datetime.date.today())
     with open(path, "w") as file:
         file.write(today)

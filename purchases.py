@@ -1,25 +1,28 @@
-from datetime import datetime
+from date import get_date
 import csv
+import datetime
+from rich import print
 
-#creating a list to hold transactions
-transactions = []
+def get_new_id(file):
+    with open(file) as f:
+        reader = csv.reader(f)
+        new_id = len(next(zip(*reader)))
+    return new_id
+    
+def get_expiration_date(days):
+    date = get_date()
+    today = datetime.datetime.strptime(date, "%Y-%m-%d"). date()
+    new_date = today + datetime.timedelta(days=days)
+    return new_date
 
-#Creating a function to record a transaction
-def record_transaction(action, product, quantity, price):
-    now = datetime.now()
-    date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-    transactions.append([date_time, action, product, quantity, price])
-
-
-#record a transaction 
-record_transaction("buy", "apple", 10, 0.5)
-
-# Record a transaction for selling a product
-record_transaction("sell", "apple", 5, 0.7)
-
-# Write the transactions to a CSV file
-with open('transactions.csv', mode='w') as file:
-    writer = csv.writer(file)
-    writer.writerow(["Date", "Action", "Product", "Quantity", "Price"])
-    for transaction in transactions:
-        writer.writerow(transaction)
+def purchase_product(product_name, quantity, price, expiration_days):
+    today = get_date()
+    expiration = get_expiration_date(expiration_days)
+    path = "./data/bought.csv"
+    with open(path, "a", newline ="") as file:
+        csv_writer = csv.writer(file)
+        for i in range(quantity):
+            id = get_new_id(path) + i
+            product = [id, product_name, today, price, expiration]
+            csv_writer.writerow(product)
+    print(f"You have purchased {quantity}x {product_name}, costing {price} eur per piece, they will expire on {expiration}")

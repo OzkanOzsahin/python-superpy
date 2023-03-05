@@ -1,90 +1,201 @@
 import pandas as pd
 import csv
+import os
+from rich import style
+from date import get_date
+from rich.console import Console
+from rich.table import Table
+from fpdf import FPDF
 
 
-def add_product(boughts):
-    """Add a new product to the inventory."""
-    print("Enter the product details:")
-    product_name = input("Name: ")
-    product_type = input("Type: ")
-    product_quantity = int(input("Quantity: "))
-    product_cost = float(input("Cost: "))
-    product_expiry = input("Expiry date (YYYY-MM-DD): ")
-    with open(boughts, mode='a', newline='') as csv_file:
-        writer = csv.writer(csv_file)
-        writer.writerow([product_name, product_type, product_quantity,
-                         product_cost, product_expiry])
-    print("Product added successfully.")
 
-def update_product(products_file):
-    """Update an existing product in the inventory."""
-    product_name = input("Enter the name of the product to update: ")
-    found = False
-    with open(products_file, mode='r') as csv_file:
-        reader = csv.reader(csv_file)
-        rows = []
+bought_path = "./data/bought.csv"
+sold_path = "./data/sold.csv"
+console = Console()
+
+def get_bought_items():
+    bought_items = []
+    with open(bought_path, "r", encoding="utf-8-sig") as bought_object:
+        reader = csv.DictReader(bought_object)
         for row in reader:
-            if row[0] == product_name:
-                found = True
-                print("Current details:")
-                print(f"Type: {row[1]}, Quantity: {row[2]}, Cost: {row[3]}, Expiry: {row[4]}")
-                new_type = input("New type (leave blank to keep current value): ")
-                new_quantity = input("New quantity (leave blank to keep current value): ")
-                new_cost = input("New cost (leave blank to keep current value): ")
-                new_expiry = input("New expiry date (leave blank to keep current value): ")
-                if new_type == "":
-                    new_type = row[1]
-                if new_quantity == "":
-                    new_quantity = row[2]
-                else:
-                    new_quantity = int(new_quantity)
-                if new_cost == "":
-                    new_cost = row[3]
-                else:
-                    new_cost = float(new_cost)
-                if new_expiry == "":
-                    new_expiry = row[4]
-                rows.append([product_name, new_type, new_quantity, new_cost, new_expiry])
-            else:
-                rows.append(row)
-    if not found:
-        print("Product not found.")
-        return
-    with open(products_file, mode='w', newline='') as csv_file:
-        writer = csv.writer(csv_file)
-        writer.writerows(rows)
-    print("Product updated successfully.")
+            bought_items.append(row)
+    return bought_items
 
-def remove_product(products_file):
-    """Remove a product from the inventory."""
-    product_name = input("Enter the name of the product to remove: ")
-    found = False
-    with open(products_file, mode='r') as csv_file:
-        reader = csv.reader(csv_file)
-        rows = []
+def get_sold_ids():
+    sold_ids = []
+    with open(sold_path, "r", encoding="utf-8-sig") as sold_object:
+        reader = csv.DictReader(sold_object)
         for row in reader:
-            if row[0] == product_name:
-                found = True
-            else:
-                rows.append(row)
-    if not found:
-        print("Product not found.")
-        return
-    with open(products_file, mode='w', newline='') as csv_file:
-        writer = csv.writer(csv_file)
-        writer.writerows(rows)
-    print("Product removed successfully.")
+            sold_ids.append(row["bought_id"])
+    return sold_ids
 
-def list_products(products_file):
-    """List all products in the inventory."""
-    with open(products_file, mode='r') as csv_file:
-        reader = csv.reader(csv_file)
+def get_sold_items():
+    sold_items = []
+    with open(sold_path, "r", encoding="utf-8-sig") as sold_object:
+        reader = csv.DictReader(sold_object)
         for row in reader:
-            print(f"{row[0]} ({row[1]}), Quantity: {row[2]}, Cost: {row[3]}, Expiry: {row[4]}")
+            sold_items.append(row)
+    return sold_items
 
-def add_sale(sales_file, products_file):
-    """Add a new sale to the records."""
-    print("Enter the sale")
+def get_available_products():
+    bought_items = get_bought_items()
+    sold_ids = get_sold_ids()
+    available_products = []
+    today = get_date()
+    for item in bought_items:
+        if item["id"] not in sold_ids and item["expiration_date"] >= today:
+            available_products.append(item)
+    return available_products
+
+def get_expired_products():
+    bought_items = get_bought_items()
+    sold_ids = get_sold_ids()
+    expired_products = []
+    today = get_date()
+    for item in bought_items:
+        if item["id"] not in sold_ids and item["expiration_date"] < today:
+            expired_products.append(item)
+    return expired_products
+
+def get_available_product(product_name):
+    bought_items = get_bought_items()
+    sold_ids = get_sold_ids()
+    availabe_products = []
+    today = get_date()
+    for item in bought_items:
+        if item['id'] not in sold_ids and item['expiration_date'] >= today and item['product_name'] == product_name:
+            availabe_products.append(item)
+    if availabe_products == []:
+        print('Sorry, no available products were found.')
+    else:
+        return availabe_products
+
+def get_sold_between_dates(first_date, second_date):
+    sold_items = get_sold_items()
+    items = []
+    for item in sold_items:
+        if item["sell_date"] >= first_date and item["sell_date"] <= second_date:
+            items.append(item)
+    return items
+
+def get_bought_between_dates(first_date, second_date):
+    bought_items = get_bought_items()
+    items = []
+    for item in bought_items:
+        if item["buy_date"] >= first_date and item["buy_date"] <= second_date:
+            items.append(item)
+    return items
+
+def get_inventory():
+    items = get_available_products()
+    inventory = {}
+    for item in items:
+        if item['product_name'] in inventory.keys():
+            inventory[item['product_name']] += 1
+        else:
+            inventory.update({item['product_name']: 1})
+    return inventory
+
+def display_inventory():
+    inventory = get_inventory()
+    table = Table(show_header=True, header_style="bold green")
+    table.add_column('Product', style='dim', width=12)
+    table.add_column('Current stock')
+    for key, value in inventory.items():
+        table.add_row(
+            key,
+            str(value),
+        )
+    console.print(table)
+
+def display_sales():
+    sales = get_sold_items()
+    purchases = get_bought_items()
+    for item in sales:
+        for product in purchases:
+            if item['bought_id'] == product['id']:
+                item.update({'product_name': product['product_name']})
+    table = Table(show_header=True, header_style="bold green")
+    table.add_column('Product', style='dim', width=12)
+    table.add_column('Date of sale')
+    table.add_column('Price')
+    for item in sales:
+        table.add_row(
+            item['product_name'],
+            item['sell_date'],
+            item['sell_price']
+        )
+    console.print(table)
+
+def display_purchases():
+    purchases = get_bought_items()
+    table = Table(show_header=True, header_style="bold green")
+    table.add_column('Product', style='dim', width=12)
+    table.add_column('Date of purchase')
+    table.add_column('Price')
+    table.add_column('Expiration date')
+    for item in purchases:
+        table.add_row(
+            item['product_name'],
+            item['buy_date'],
+            item['buy_price'],
+            item['expiration_date']
+        )
+    console.print(table)
+
+def export_inventory(export_csv, export_pdf):
+    inventory = get_inventory()
+    path_csv = "./data/export_inventory.csv"
+    path_pdf = "./data/export_inventory.pdf"
+    if export_csv == "Yes":
+        if os.path.isfile(path_csv):
+            print(f"This file already exists")
+        else:
+            with open(path_csv, "w", newline ="") as file:
+                csv_writer = csv.writer(file)
+                for product, quantity in inventory.items():
+                    products = [product, quantity]
+                    csv_writer.writerow(products)
+            display_inventory()
+            print(f"CSV file created")
+    elif export_pdf == "Yes":
+        if os.path.isfile(path_pdf):
+            print(f"This file already exists")
+        else:
+            with open(path_csv, newline= "") as file:
+                reader = csv.reader(file)
+                
+                pdf = FPDF()
+                pdf.add_page()
+                page_width = pdf.w - 2 * pdf.l_margin
+                    
+                pdf.set_font('Times','B',14.0) 
+                pdf.cell(page_width, 0.0, 'Inventory', align='C')
+                pdf.ln(10)
+
+                pdf.set_font('Courier', '', 12)
+                
+                col_width = page_width/4
+                
+                pdf.ln(1)
+                
+                th = pdf.font_size
+                
+                for row in reader:
+                    pdf.cell(col_width, th, str(row[0]), border=1)
+                    pdf.cell(col_width, th, row[1], border=1)
+                    pdf.ln(th)
+                    
+                pdf.ln(10)
+
+                pdf.set_font('Times','',10.0) 
+                pdf.cell(page_width, 0.0, '- end of report -', align='C')
+                
+                pdf.output(path_pdf, 'F')
+            display_inventory()
+            print(f"PDF file created")
+    else:
+        display_inventory()
 
 
 
