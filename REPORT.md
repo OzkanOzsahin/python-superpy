@@ -6,3 +6,7 @@ Pandas (python library)
 
 It was hard to find the write way to easily read external files (csv) and display them in the command- line - interface, storing and writing data to my csv file again, like in transactions.csv. So at last i used Pandas. 
 
+DATE
+
+I have created a function to print and show current date and time. 
+

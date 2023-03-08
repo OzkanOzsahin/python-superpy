@@ -1,17 +1,18 @@
 import pandas as pd
 import csv
 import os
-from rich import style
 from date import get_date
-from rich.console import Console
 from rich.table import Table
 from fpdf import FPDF
+from rich.console import Console
 
 
 
-bought_path = "./data/bought.csv"
-sold_path = "./data/sold.csv"
+bought_path = "./bought.csv"
+sold_path = "./sold.csv"
+transactions_path = "./transactions.csv"
 console = Console()
+
 
 def get_bought_items():
     bought_items = []

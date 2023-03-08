@@ -1,4 +1,4 @@
-import datetime 
+
 import argparse
 import pandas as pd
 from date import advance_time, print_date, set_current_date
@@ -6,44 +6,21 @@ from sales import sell_product
 from inventory import export_inventory, display_sales, display_purchases
 from revenue import print_revenue_between_dates, print_total_revenue
 from profit import print_total_profit, print_profit_between_dates
-from rich.console import Console
-from rich import print
 from purchases import purchase_product
-
-
-
 
 
 # Do not change these lines.
 __winc_id__ = "a2bc36ea784242e4989deb157d527ba0"
 __human_name__ = "superpy"
 
-#Conception of what day it is
-now = datetime.datetime.now()
-today = now.strftime("%Y-%m-%d")
-# Save the current date to a text file
-with open("current_date.txt", "w") as f:
- f.write(today)
 
-# Read the saved date from the text file
-with open("current_date.txt", "r") as f:
-    saved_date = f.read().strip()
-
-# Check if the saved date matches the current date
-if saved_date == now:
-    print("Today is", now)
-else:
-    print("Today is today", now)
     
 
-
-
-#create ArgumentParser object
+#create ArgumentParser 
 parser = argparse.ArgumentParser(description='Process data')
 
 #Add parsers..
-parser.add_argument('integers', metavar='N', type=int, nargs='+',
-                    help='an integer to be processed')
+
 subparser = parser.add_subparsers(dest="command", required=True)
 show_date = subparser.add_parser("show-date", help="Show system date")
 set_today = subparser.add_parser("set-current-date", help="Set system date to current date")
@@ -167,6 +144,3 @@ if args.command == "show-purchases":
 #pandas
 df = pd.read_csv('bought.csv')
 print(df)
-        
-
-
