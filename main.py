@@ -14,8 +14,6 @@ __winc_id__ = "a2bc36ea784242e4989deb157d527ba0"
 __human_name__ = "superpy"
 
 
-    
-
 #create ArgumentParser 
 parser = argparse.ArgumentParser(description='Process data')
 
@@ -74,7 +72,7 @@ if args.command == "advance-date":
 
 if args.command == "register-purchase":
     purchase.set_defaults(
-        func=purchase_product(
+        func = purchase_product(
             args.productname, 
             args.quantity,
             args.price,
@@ -92,9 +90,8 @@ if args.command == "register-sale":
     )
 
 if args.command == "show-total-revenue":
-    total_revenue.set_defaults(
-        func=print_total_revenue()
-    )
+    total_revenue.set_defaults(func=print_total_revenue)
+    
 
 if args.command == "show-date-revenue":
     date_revenue.set_defaults(
@@ -120,8 +117,9 @@ if args.command == "show-date-profit":
 if args.command == "show-inventory":
     inventory.set_defaults(func=export_inventory(
         args.exportCSV,
-        args.exportPDF
+        args.exportPDF,
     ))
+
 
 if args.command == "show-sales":
     sales.set_defaults(

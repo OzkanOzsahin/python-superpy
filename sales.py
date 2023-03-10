@@ -1,4 +1,4 @@
-from itertools import product
+
 from date import get_date
 from inventory import get_available_product
 from purchases import get_new_id
@@ -7,6 +7,8 @@ import csv
 
 def sell_product(product_name, quantitiy, price):
     today = get_date()
+    sold_items = []
+    sold_items.append("")
     available_products = get_available_product(product_name)
     path = "sold.csv"
     with open(path, "a", newline="") as file:

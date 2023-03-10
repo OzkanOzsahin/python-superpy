@@ -1,6 +1,6 @@
 import pandas as pd
 import csv
-import os
+import os.path
 from date import get_date
 from rich.table import Table
 from fpdf import FPDF
@@ -13,6 +13,7 @@ sold_path = "./sold.csv"
 transactions_path = "./transactions.csv"
 console = Console()
 
+ 
 
 def get_bought_items():
     bought_items = []
@@ -146,13 +147,13 @@ def display_purchases():
 
 def export_inventory(export_csv, export_pdf):
     inventory = get_inventory()
-    path_csv = "./data/export_inventory.csv"
-    path_pdf = "./data/export_inventory.pdf"
+    export_csv = "./export_inventory.csv"
+    path_pdf = "./export_inventory.pdf"
     if export_csv == "Yes":
-        if os.path.isfile(path_csv):
+        if os.path.isfile(export_csv):
             print(f"This file already exists")
         else:
-            with open(path_csv, "w", newline ="") as file:
+            with open(export_csv, "w", newline ="") as file:
                 csv_writer = csv.writer(file)
                 for product, quantity in inventory.items():
                     products = [product, quantity]
@@ -163,7 +164,7 @@ def export_inventory(export_csv, export_pdf):
         if os.path.isfile(path_pdf):
             print(f"This file already exists")
         else:
-            with open(path_csv, newline= "") as file:
+            with open(export_csv, newline= "") as file:
                 reader = csv.reader(file)
                 
                 pdf = FPDF()
