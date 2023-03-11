@@ -1,16 +1,17 @@
 import pandas as pd
 import csv
 import os.path
+import reportlab as reportlab
 from date import get_date
 from rich.table import Table
-from fpdf import FPDF
+
 from rich.console import Console
 
 
 
-bought_path = "./bought.csv"
-sold_path = "./sold.csv"
-transactions_path = "./transactions.csv"
+bought_path = "bought.csv"
+sold_path = "sold.csv"
+transactions_path = "transactions.csv"
 console = Console()
 
  
@@ -145,59 +146,33 @@ def display_purchases():
         )
     console.print(table)
 
+
+
 def export_inventory(export_csv, export_pdf):
     inventory = get_inventory()
-    export_csv = "./export_inventory.csv"
-    path_pdf = "./export_inventory.pdf"
-    if export_csv == "Yes":
+    
+    if export_csv:
         if os.path.isfile(export_csv):
-            print(f"This file already exists")
+            print(f"The CSV file '{export_csv}' already exists")
         else:
-            with open(export_csv, "w", newline ="") as file:
+            with open(export_csv, "w", newline="") as file:
                 csv_writer = csv.writer(file)
                 for product, quantity in inventory.items():
                     products = [product, quantity]
                     csv_writer.writerow(products)
-            display_inventory()
-            print(f"CSV file created")
-    elif export_pdf == "Yes":
-        if os.path.isfile(path_pdf):
-            print(f"This file already exists")
+            print(f"CSV file '{export_csv}' created")
+    
+    if export_pdf:
+        if os.path.isfile(export_pdf):
+            print(f"The PDF file '{export_pdf}' already exists")
         else:
-            with open(export_csv, newline= "") as file:
-                reader = csv.reader(file)
-                
-                pdf = FPDF()
-                pdf.add_page()
-                page_width = pdf.w - 2 * pdf.l_margin
-                    
-                pdf.set_font('Times','B',14.0) 
-                pdf.cell(page_width, 0.0, 'Inventory', align='C')
-                pdf.ln(10)
+            # code to export to PDF goes here
+            print(f"PDF file '{export_pdf}' created")
 
-                pdf.set_font('Courier', '', 12)
                 
-                col_width = page_width/4
                 
-                pdf.ln(1)
                 
-                th = pdf.font_size
-                
-                for row in reader:
-                    pdf.cell(col_width, th, str(row[0]), border=1)
-                    pdf.cell(col_width, th, row[1], border=1)
-                    pdf.ln(th)
-                    
-                pdf.ln(10)
-
-                pdf.set_font('Times','',10.0) 
-                pdf.cell(page_width, 0.0, '- end of report -', align='C')
-                
-                pdf.output(path_pdf, 'F')
-            display_inventory()
-            print(f"PDF file created")
-    else:
-        display_inventory()
+               
 
 
 

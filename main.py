@@ -132,13 +132,11 @@ if args.command == "show-purchases":
     )
 
 
-# Your code below this line
-
-
-#import and read csv
 
 
 
 #pandas
 df = pd.read_csv('bought.csv')
+df = pd.read_csv('sold.csv')
 print(df)
+

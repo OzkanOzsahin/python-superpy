@@ -2,6 +2,7 @@ from revenue import get_total_revenue, get_revenue_between_dates
 from inventory import get_bought_items, get_bought_between_dates
 from rich import print
 
+
 def get_total_profit():
     bought_items = get_bought_items()
     total_revenue = get_total_revenue()

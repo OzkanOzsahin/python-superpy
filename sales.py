@@ -10,7 +10,7 @@ def sell_product(product_name, quantitiy, price):
     sold_items = []
     sold_items.append("")
     available_products = get_available_product(product_name)
-    path = "sold.csv"
+    path = "./sold.csv"
     with open(path, "a", newline="") as file:
         csv_writer = csv.writer(file)
         for i in range(quantitiy):
@@ -18,5 +18,5 @@ def sell_product(product_name, quantitiy, price):
             id = get_new_id(path) + i
             product = [id, bought_id, today, price]
             csv_writer.writerow(product)
-    print(f"Super sold {quantitiy}x {product_name}, for {price} eur, on, {today}")
+    print(f"Sold {quantitiy}x {product_name}, for {price} eur, on, {today}")
             
