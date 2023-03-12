@@ -1,9 +1,9 @@
 
-from inventory import get_sold_between_dates, get_sold_items 
+from inventory import get_sold_items, get_sold_between_dates
 from rich import print
 
 def get_total_revenue():
-    sold_items = sold_items()
+    sold_items = get_sold_items()
     total = 0
     for item in sold_items:
         total += float(item["sell_price"])
@@ -16,7 +16,7 @@ def print_total_revenue():
 
 def get_revenue_between_dates(first_date, second_date):
     total = 0
-    items = items(first_date, second_date)
+    items = get_sold_between_dates(first_date, second_date)
     for item in items:
         total += float(item["sell_price"])
     return total
