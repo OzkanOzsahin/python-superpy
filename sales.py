@@ -10,7 +10,7 @@ def sell_product(product_name, quantitiy, price):
     sold_items = []
     sold_items.append("")
     available_products = get_available_product(product_name)
-    path = "./sold.csv"
+    path = "sold.csv"
     with open(path, "a", newline="") as file:
         csv_writer = csv.writer(file)
         for i in range(quantitiy):

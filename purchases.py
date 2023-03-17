@@ -18,7 +18,7 @@ def get_expiration_date(days):
 def purchase_product(product_name, quantity, price, expiration_days):
     today = get_date()
     expiration = get_expiration_date(expiration_days)
-    path = "./bought.csv"
+    path = "bought.csv"
     with open(path, "a", newline ="") as file:
         csv_writer = csv.writer(file)
         for i in range(quantity):

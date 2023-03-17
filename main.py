@@ -103,7 +103,8 @@ if args.command == "show-date-revenue":
 
 if args.command == "show-total-profit":
     total_profit.set_defaults(
-        func=print_total_profit()
+        func=print_total_profit
+       
     )
 
 if args.command == "show-date-profit":
