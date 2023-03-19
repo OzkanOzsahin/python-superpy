@@ -51,7 +51,7 @@ Displays profit between two specific dates.
 - python main.py show-inventory
 Displaying the products which are available
 
-- python main.py show-inventory --exportCSV Yes
+- python main.py show-inventory --exportCSV Inventory.csv
 Displays and exports inventory to csv file
 
 - python main.py show-sales
