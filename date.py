@@ -1,5 +1,5 @@
 import datetime
-path = "./date.txt"
+path = "date.txt"
 now = datetime.datetime.now()
 print("Current date and time")
 print(now)

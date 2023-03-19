@@ -11,7 +11,6 @@ from rich.console import Console
 
 bought_path = "bought.csv"
 sold_path = "sold.csv"
-transactions_path = "transactions.csv"
 console = Console()
 
  

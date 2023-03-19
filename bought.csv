@@ -139,3 +139,6 @@ id,product_name,buy_date,buy_price,expiration_date
 138,Orange,2023-03-16,3.55,2023-03-17
 139,chocolatecookies,2023-03-16,3.55,2023-04-05
 140,chocolatecookies,2023-03-16,3.55,2023-04-05
+141,Olives,2023-03-16,3.55,2023-06-24
+142,Beer,2023-03-17,2.0,2023-07-15
+143,Beer,2023-03-17,2.0,2023-07-15
